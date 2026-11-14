@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en" class="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happiness in Leadership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE calm, light, personal: same voice as Marvin's portfolio
+   IDEA his portfolio cards: the six modules stacked in one column, joined by a dotted line; each opens like a folder
+   PICTURE one soft line drawing per module on the card, then diagrams inside each opened module
+   COLOUR his cream #f4ede1 and glass, warm ink, one muted pastel per module
+   TYPE Figtree 300 for titles, 400 for text
+   LAYOUT intro screen, one column of glass cards; opened module fills the screen in its own pastel, text beside diagram, stacked on phone */
+:root{color-scheme:light;--cream:#f4ede1;--ink:#3b352d;--ink-mid:#5a5147;--ink-soft:#7a7064;--glass-edge:rgba(255,255,255,.75);--line:rgba(90,75,55,.22);--card-w:min(430px,76vw,62vh)}
+*{box-sizing:border-box;margin:0;padding:0;min-width:0}
+html{scroll-behavior:smooth}
+body{font-family:Figtree,system-ui,sans-serif;font-weight:400;color:var(--ink);background:var(--cream);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(60vw 60vw at 15% 10%,#fffaf0 0%,transparent 60%),radial-gradient(50vw 50vw at 90% 90%,#efe2cb 0%,transparent 60%),var(--cream)}
+.blob{position:fixed;border-radius:50%;z-index:-1;pointer-events:none}
+.blob.a{width:56vw;height:56vw;top:-17vw;right:-1vw;background:radial-gradient(circle,rgba(247,217,180,.55) 0%,rgba(247,217,180,.25) 35%,rgba(247,217,180,0) 68%)}
+.blob.b{width:46vw;height:46vw;bottom:-14vw;left:-4vw;background:radial-gradient(circle,rgba(232,214,240,.35) 0%,rgba(232,214,240,.15) 35%,rgba(232,214,240,0) 68%)}
+.glass{background:linear-gradient(135deg,rgba(255,255,255,.86),rgba(255,252,245,.7) 55%,rgba(255,248,235,.62));border:1px solid var(--glass-edge);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(200,180,150,.2),0 14px 28px -18px rgba(90,70,40,.3);position:relative;overflow:hidden}
+.glass::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 38%)}
+.m1{--tint:#f6e5b9;--acc:#b38a2c}.m2{--tint:#f5d8ca;--acc:#c0705a}.m3{--tint:#d9e3f0;--acc:#56799f}.m4{--tint:#d8e8da;--acc:#5a8d6c}.m5{--tint:#e5dcef;--acc:#8468ac}.m6{--tint:#f2dcc4;--acc:#ac7744}.m7{--tint:#efe2cb;--acc:#7a603c}
+
+html:not(.en) .en,html.en .it{display:none}
+.topbar{position:fixed;top:16px;right:16px;z-index:30;display:flex;align-items:center;gap:10px}
+.lang{display:flex;align-items:center;gap:2px;height:46px;padding:4px;border-radius:999px}
+.xbtn{height:46px;min-height:0;padding:0 18px}
+.xbtn[hidden]{display:none}
+.sheet:focus{outline:none}
+.lang button{position:relative;z-index:1;font:inherit;font-size:.9rem;letter-spacing:.12em;color:var(--ink-soft);background:none;border:0;border-radius:999px;min-width:44px;min-height:36px;padding:0 12px;cursor:pointer}
+.lang button[aria-pressed=true]{background:rgba(255,255,255,.95);color:var(--ink);box-shadow:0 4px 12px -6px rgba(90,70,40,.4)}
+.lang button:focus-visible{outline:2px solid rgba(122,96,60,.6);outline-offset:2px}
+.bw{color:inherit;text-decoration:underline;text-decoration-color:rgba(122,96,60,.45);text-underline-offset:3px;text-decoration-thickness:1px}
+.bw:hover{text-decoration-color:currentColor}
+/* intro */
+.intro{height:100vh;display:grid;place-items:center;text-align:center;padding:0 16px;position:relative}
+.intro h1{font-weight:300;font-size:clamp(2.6rem,9vw,7.5rem);letter-spacing:-.01em;line-height:1;color:rgba(59,53,45,.82)}
+.intro .h1b{margin-top:10px;font-weight:300;font-size:clamp(1.6rem,4.4vw,3.4rem);line-height:1.05;color:rgba(59,53,45,.7)}
+html.arrived .intro .h1b{animation:rise 1.1s cubic-bezier(.2,.75,.2,1) both 1.1s}
+.intro .note{margin:22px auto 0;max-width:48ch;font-size:clamp(.92rem,1.4vw,1.02rem);line-height:1.5;color:var(--ink-soft)}
+html.arrived .intro .note{animation:rise 1.1s cubic-bezier(.2,.75,.2,1) both 1.8s}
+.intro .sub{margin-top:18px;font-size:clamp(1.05rem,2vw,1.35rem);color:var(--ink-soft)}
+.hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:8px}
+.hint span{display:inline-block;animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(7px)}}
+html.arrived .intro h1{-webkit-mask-image:linear-gradient(90deg,#000 0 40%,transparent 60% 100%);mask-image:linear-gradient(90deg,#000 0 40%,transparent 60% 100%);-webkit-mask-size:250% 100%;mask-size:250% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;animation:reveal 3s cubic-bezier(.4,.15,.3,1) both .15s}
+html.arrived .intro .sub{animation:rise 1.1s cubic-bezier(.2,.75,.2,1) both 1.4s}
+html.arrived .intro .hint{animation:fade .8s ease both 2.6s}
+@keyframes reveal{from{-webkit-mask-position:100% 0;mask-position:100% 0;filter:blur(4px)}to{-webkit-mask-position:0 0;mask-position:0 0;filter:blur(0)}}
+@keyframes revealv{from{-webkit-mask-position:0 100%;mask-position:0 100%;filter:blur(4px)}to{-webkit-mask-position:0 0;mask-position:0 0;filter:blur(0)}}
+@keyframes rise{from{opacity:0;transform:translateY(28px);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* vertical list */
+.list-wrap{display:flex;flex-direction:column;align-items:center;padding:0 16px 120px}
+.link{width:1.5px;height:clamp(48px,9vh,90px);background:repeating-linear-gradient(180deg,rgba(122,104,80,.4) 0 2px,transparent 2px 9px);position:relative}
+.link b{position:absolute;inset:0;background:rgba(122,96,60,.6)}
+.card{width:var(--card-w);border-radius:24px;padding:12px 12px 22px}
+.card .shot{display:block;border-radius:15px;overflow:hidden;position:relative;aspect-ratio:16/10;background:linear-gradient(160deg,var(--tint),rgba(255,250,240,.7));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.card .shot svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.card .open{position:absolute;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;font-size:.88rem;color:var(--ink);background:linear-gradient(135deg,rgba(255,255,255,.94),rgba(255,250,240,.8));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 8px 22px -10px rgba(90,70,40,.45)}
+.card .open i{font-style:normal;display:inline-block;animation:onudge 1.8s ease-in-out infinite}
+@keyframes onudge{50%{transform:translateX(4px)}}
+.card .info{padding:16px 10px 0}
+.card .num{font-size:.78rem;letter-spacing:.25em;color:var(--ink-soft)}
+.card h2{font-weight:400;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.05;margin:4px 0 8px}
+.card h2 a{text-decoration:none;color:inherit}
+.card p{font-size:1.02rem;line-height:1.45;color:var(--ink-mid)}
+.card .tags{margin-top:12px;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+@media(hover:hover){.card .shot:hover svg{transform:scale(1.03)}.card h2 a:hover{text-decoration:underline;text-underline-offset:4px}}
+.card a:focus-visible{outline:2px solid rgba(122,96,60,.6);outline-offset:3px}
+.card.outro{padding:40px 28px;text-align:center;background:none;border:0;box-shadow:none;display:grid;justify-items:center;gap:16px}
+.card.outro::before{display:none}
+.outro h2{font-weight:300;font-size:clamp(2rem,4vw,3rem)}
+.outro p{font-size:1.05rem;color:var(--ink-soft);line-height:1.5}
+.outro .src{font-size:.72rem;line-height:1.45;margin-top:40px;opacity:.85;max-width:34ch}
+.counter{position:fixed;right:24px;bottom:22px;font-size:.8rem;letter-spacing:.2em;color:var(--ink-soft);padding:8px 14px;border-radius:999px;opacity:0;transition:opacity .4s;z-index:5}
+.counter.on{opacity:1}
+@media(max-width:700px){.card{padding:10px 10px 18px}.card p{font-size:.96rem}.card .open{font-size:.8rem;padding:7px 12px;right:10px;bottom:10px}}
+
+/* opened module */
+.panel{position:fixed;inset:0;z-index:20;overflow-y:auto;background:var(--tint,#f4ede1);opacity:0;visibility:hidden;transition:opacity .35s,visibility 0s .35s;overscroll-behavior:contain}
+.panel.on{opacity:1;visibility:visible;transition:opacity .35s}
+.sheet{width:min(1040px,100% - 32px);margin:0 auto;padding:86px 0 48px;transform:translateY(24px);transition:transform .5s cubic-bezier(.2,.75,.2,1)}
+.panel.on .sheet{transform:none}
+.panel .glass::before{display:none}
+
+.pill{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;min-height:44px;border-radius:999px;font:inherit;font-size:.95rem;color:var(--ink);cursor:pointer;text-decoration:none}
+.pill:hover{background:rgba(255,255,255,.9)}
+.pill:focus-visible{outline:2px solid rgba(122,96,60,.6);outline-offset:3px}
+.ph .num{font-size:.78rem;letter-spacing:.25em;color:var(--ink-soft)}
+.ph h2{font-weight:300;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.02;margin:8px 0 14px;max-width:18ch}
+.ph p{font-size:1.15rem;line-height:1.5;color:var(--ink-mid);max-width:60ch}
+.blk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;padding:clamp(28px,4vw,44px) 0;border-top:1px solid var(--line)}
+.ph+.blk{margin-top:28px}
+@media(max-width:760px){.blk{grid-template-columns:minmax(0,1fr)}}
+.blk h3{font-weight:400;font-size:1.65rem;line-height:1.15;margin-bottom:10px}
+.blk p{font-size:1.06rem;line-height:1.55;color:var(--ink-mid);margin-bottom:10px}
+.blk p b,.ex b{font-weight:600;color:var(--ink)}
+.ex{margin-top:14px;border-radius:16px;padding:14px 16px;font-size:1rem;line-height:1.5;background:rgba(255,255,255,.6);border:1px solid var(--glass-edge);border-left:3px solid var(--acc);color:var(--ink-mid)}
+.ex .k{display:block;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:4px}
+.fig{border-radius:20px;padding:clamp(14px,2.5vw,24px);background:rgba(255,255,255,.42);border:1px solid rgba(255,255,255,.7)}
+.fig svg{width:100%;height:auto;display:block}
+.cap{font-size:.88rem;color:var(--ink-soft);margin-top:10px;line-height:1.4}
+.leg{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.92rem;margin-top:10px}
+.leg i{display:inline-block;width:22px;height:2px;background:var(--acc);vertical-align:middle;margin-right:7px}
+.leg .q i{background:var(--ink-soft);height:0;border-top:2px dashed var(--ink-soft)}
+.bar3{display:flex;height:64px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.8)}
+.bar3 div{display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.85rem;line-height:1.2;text-align:center;padding:0 4px}
+.bar3 b{font-size:1.3rem;font-weight:400}
+.list{display:grid;gap:10px}
+.li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;background:rgba(255,255,255,.55);border:1px solid var(--glass-edge);border-radius:16px;padding:12px 14px}
+.li svg{width:44px;height:44px}
+.li b{display:block;font-weight:400;font-size:1.15rem;color:var(--ink)}
+.li span{font-size:.95rem;color:var(--ink-mid);line-height:1.4}
+.ctl{display:grid;gap:2px;margin-bottom:6px}
+.ctl label{display:flex;justify-content:space-between;font-size:1rem}
+input[type=range]{width:100%;height:40px;accent-color:var(--acc)}
+.meter{height:12px;border-radius:6px;background:rgba(255,255,255,.7);overflow:hidden;margin-top:4px}
+.meter span{display:block;height:100%;background:var(--acc);transition:width .2s}
+.out{font-size:1.35rem;margin-top:10px}
+.quad{display:grid;grid-template-columns:22px minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto 22px;gap:8px}
+.quad .c{background:rgba(255,255,255,.55);border:1px solid var(--glass-edge);border-radius:14px;padding:12px;font-size:.92rem;line-height:1.35;color:var(--ink-mid);transition:box-shadow .25s,transform .25s}
+.quad .c b{display:block;font-weight:400;font-size:1.1rem;color:var(--ink)}
+.quad .c.on{box-shadow:0 0 0 2px var(--acc);transform:scale(1.02);background:rgba(255,255,255,.85)}
+.ax{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;justify-content:center;text-align:center}
+.ax.v{writing-mode:vertical-rl;transform:rotate(180deg)}
+.flow{display:grid;gap:8px}
+.flow .t{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px}
+.fl{display:grid;grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr) 18px minmax(0,1fr);gap:6px;align-items:center}
+.fl div{background:rgba(255,255,255,.6);border:1px solid var(--glass-edge);border-radius:12px;padding:10px 6px;text-align:center;font-size:.88rem;line-height:1.3;color:var(--ink-mid)}
+.fl div b{display:block;font-weight:400;font-size:1rem;color:var(--ink)}
+.fl .hot{box-shadow:0 0 0 1.5px var(--acc)}
+.fl span{text-align:center;color:var(--acc)}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.duo div{background:rgba(255,255,255,.55);border:1px solid var(--glass-edge);border-radius:16px;padding:14px;font-size:.95rem;line-height:1.45;color:var(--ink-mid)}
+.duo div b{display:block;font-weight:400;font-size:1.15rem;color:var(--ink);margin-bottom:4px}
+.duo .hi{background:rgba(255,255,255,.9);box-shadow:inset 0 0 0 1.5px var(--acc)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chips span{background:rgba(255,255,255,.65);border:1px solid var(--glass-edge);border-radius:999px;padding:7px 13px;font-size:.92rem}
+.tl{margin-top:4px}
+.tl .ln{height:2px;background:linear-gradient(90deg,rgba(122,96,60,.2),var(--acc));position:relative}
+.tl .ln i{position:absolute;top:-5px;width:12px;height:12px;border-radius:50%;background:var(--cream);border:1.5px solid var(--acc)}
+.tl .mk{display:flex;justify-content:space-between;margin-top:14px;font-size:.9rem;color:var(--ink-mid)}
+.tl .mk b{display:block;font-weight:300;font-size:2rem;color:var(--ink);line-height:1}
+.cigs{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}
+.cigs i{height:40px;border-radius:8px;background:rgba(255,255,255,.75);border:1px solid var(--glass-edge);position:relative;overflow:hidden}
+.cigs i::after{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:var(--acc);opacity:.75}
+.tiles{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.tiles div{background:rgba(255,255,255,.55);border:1px solid var(--glass-edge);border-radius:16px;padding:14px;font-size:.92rem;line-height:1.4;color:var(--ink-mid)}
+.tiles b{display:block;font-weight:400;font-size:1.3rem;color:var(--ink)}
+.tiles em{font-style:normal;display:block;color:var(--ink)}
+.steps{display:grid;gap:8px}
+.steps div{display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;align-items:center;background:rgba(255,255,255,.55);border:1px solid var(--glass-edge);border-radius:14px;padding:10px 12px;font-size:.98rem;color:var(--ink-mid)}
+.steps i{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--acc);display:grid;place-items:center;font-style:normal;color:var(--ink)}
+.room{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(0,1fr);border-radius:16px;overflow:hidden;min-height:120px;text-align:center;font-size:.9rem;color:var(--ink-mid)}
+.room div{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:8px;background:rgba(255,255,255,.6)}
+.room b{font-weight:400;font-size:1.1rem;color:var(--ink)}
+.room .mid{background:repeating-linear-gradient(135deg,rgba(255,255,255,.35) 0 9px,rgba(255,255,255,.75) 9px 18px)}
+.room .end{background:rgba(255,255,255,.95);box-shadow:inset 0 0 0 1.5px var(--acc)}
+.pil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:end}
+.pil div{border-radius:14px 14px 6px 6px;background:rgba(255,255,255,.7);border:1px solid var(--glass-edge);border-bottom:3px solid var(--acc);padding:12px 8px;text-align:center;font-size:.9rem;color:var(--ink-mid);display:flex;flex-direction:column;justify-content:flex-end}
+.pil b{display:block;font-weight:400;font-size:1.15rem;color:var(--ink)}
+.six{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px}
+@media(max-width:760px){.six{grid-template-columns:minmax(0,1fr)}}
+.six div{background:rgba(255,255,255,.6);border:1px solid var(--glass-edge);border-radius:18px;padding:18px;font-size:1rem;line-height:1.45;color:var(--ink-mid)}
+.six b{display:block;font-weight:400;font-size:1.3rem;color:var(--ink);margin-bottom:4px}
+.six small{display:block;margin-top:8px;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft)}
+.thanks{margin-top:28px;border-radius:20px;padding:clamp(20px,3vw,32px);background:rgba(255,255,255,.42);border:1px solid rgba(255,255,255,.7)}
+.thanks h3{font-weight:300;font-size:2rem;margin-bottom:8px}
+.thanks .src2{font-size:.74rem;line-height:1.45;color:var(--ink-soft);margin-top:44px;max-width:60ch}
+.thanks p{font-size:1.08rem;line-height:1.55;color:var(--ink-mid);margin-bottom:8px}
+.pnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+@media(prefers-reduced-motion:reduce){html.arrived .intro *{animation:none!important;-webkit-mask:none!important;mask:none!important}.hint span,.card .open i{animation:none}.panel,.sheet{transition:none}}
+
+/* interactive parts: make them obvious */
+.try-tag{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;margin:0 0 10px;padding:6px 12px 6px 8px;border-radius:999px;background:rgba(255,255,255,.85);border:1px solid var(--acc);font-size:.88rem;color:var(--ink)}
+.try-tag svg{width:22px;height:22px;flex:none}
+.try{position:relative}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;cursor:grab;--p:50%}
+input[type=range]:active{cursor:grabbing}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--acc) var(--p),rgba(255,255,255,.85) var(--p));box-shadow:inset 0 0 0 1px rgba(122,104,80,.15)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-10px;border-radius:50%;background:#fff;border:3px solid var(--acc);box-shadow:0 4px 12px -4px rgba(60,45,25,.45);transition:transform .15s}
+input[type=range]:hover::-webkit-slider-thumb{transform:scale(1.12)}
+input[type=range]::-moz-range-track{height:8px;border-radius:4px;background:rgba(255,255,255,.85)}
+input[type=range]::-moz-range-progress{height:8px;border-radius:4px;background:var(--acc)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--acc);box-shadow:0 4px 12px -4px rgba(60,45,25,.45)}
+input[type=range]:focus-visible{outline:2px solid var(--acc);outline-offset:4px;border-radius:8px}
+.try:not(.used) input[type=range]::-webkit-slider-thumb{animation:ring 1.8s ease-out infinite}
+.try:not(.used) input[type=range]::-moz-range-thumb{animation:ring 1.8s ease-out infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--acc) 55%,transparent),0 4px 12px -4px rgba(60,45,25,.45)}70%{box-shadow:0 0 0 12px transparent,0 4px 12px -4px rgba(60,45,25,.45)}100%{box-shadow:0 0 0 0 transparent,0 4px 12px -4px rgba(60,45,25,.45)}}
+.ctl label span{display:inline-grid;place-items:center;min-width:34px;height:26px;padding:0 8px;border-radius:999px;background:var(--acc);color:#fff;font-weight:400;font-size:.92rem}
+.card{cursor:pointer;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+@media(hover:hover){.card:not(.outro):hover{transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 26px 40px -22px rgba(90,70,40,.45)}.card:not(.outro):hover .open{background:var(--acc);color:#fff;border-color:var(--acc)}}
+.card.outro{cursor:default}
+.card .open{border:1px solid var(--acc)!important;transition:background .25s,color .25s}
+.bw::after{content:" ↗";font-size:.85em}
+.pill,.lang{border:1px solid rgba(122,96,60,.28)!important}
+@media(prefers-reduced-motion:reduce){.try:not(.used) input[type=range]::-webkit-slider-thumb,.try:not(.used) input[type=range]::-moz-range-thumb{animation:none}.card{transition:none}}
+.flow{container-type:inline-size}
+@container (max-width:440px){.fl{grid-template-columns:minmax(0,1fr);gap:4px}.fl span{transform:rotate(90deg);line-height:1}}
+.pil{container-type:inline-size}
+@container (max-width:400px){.pil div{padding:10px 4px}.pil b{font-size:.92rem}.pil div{font-size:.82rem}}
+.panel.on::before{content:"";position:sticky;top:0;display:block;height:80px;margin-bottom:-80px;z-index:2;pointer-events:none;background:linear-gradient(var(--tint,#f4ede1) 50%,transparent)}
+</style>
+</head>
+<body>
+<div class="blob a"></div><div class="blob b"></div>
+
+<section class="intro">
+  <div>
+    <h1>Happiness in Leadership</h1>
+    <p class="h1b">Managing Happiness</p>
+    <p class="sub"><span class="it">Corso di Arthur C. Brooks, HarvardX</span><span class="en">A course by Arthur C. Brooks, HarvardX</span></p>
+    <p class="note"><span class="it">Basato su quello che ho imparato nel corso Managing Happiness di Arthur C. Brooks (HarvardX). Testi e sintesi sono miei; i grafici mostrano andamenti indicativi.</span><span class="en">Based on what I learned in Arthur C. Brooks's Managing Happiness course (HarvardX). The texts and summaries are my own; the charts show indicative trends.</span></p>
+  </div>
+  <div class="hint"><span class="it">Scorri</span><span class="en">Scroll</span> <span>↓</span></div>
+</section>
+
+<section class="list-wrap" id="list">
+  <article class="card glass m1" data-item data-open="1">
+        <a class="shot" href="#module-1" data-open="1" aria-label="Apri il modulo 1">
+          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#b38a2c" stroke-width="1.6"><circle cx="134" cy="88" r="46" fill="rgba(255,255,255,.55)"/><circle cx="186" cy="88" r="46" fill="rgba(255,255,255,.4)"/><circle cx="160" cy="130" r="46" fill="rgba(255,255,255,.3)"/></g><circle cx="160" cy="102" r="5" fill="#b38a2c"/></svg>
+          <span class="open" aria-hidden="true"><span class="it">Apri il modulo</span><span class="en">Open module</span> <i>→</i></span>
+        </a>
+        <div class="info"><div class="num">01 · <span class="it">4 idee</span><span class="en">4 ideas</span></div><h2><a href="#module-1" data-open="1"><span class="it">Cos'è la felicità</span><span class="en">What happiness is</span></a></h2><p><span class="it">Non è un'emozione da inseguire: è qualcosa che si allena, con tre ingredienti e una formula.</span><span class="en">Not a feeling to chase, but something you train, with three ingredients and a formula.</span></p><div class="tags"><span class="it">Macronutrienti · Abitudini · Formula</span><span class="en">Macronutrients · Habits · Formula</span></div></div>
+      </article>
+  <div class="link"><b></b></div>
+  <article class="card glass m2" data-item data-open="2">
+        <a class="shot" href="#module-2" data-open="2" aria-label="Apri il modulo 2">
+          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="rgba(255,255,255,.6)" stroke="#c0705a" stroke-width="1.6"><circle cx="118" cy="100" r="44"/><circle cx="202" cy="100" r="44"/></g><g stroke="#c0705a" stroke-width="2.4" stroke-linecap="round"><line x1="118" y1="100" x2="146" y2="72"/><line x1="202" y1="100" x2="180" y2="134"/></g><g fill="#c0705a"><circle cx="118" cy="100" r="4"/><circle cx="202" cy="100" r="4"/></g></svg>
+          <span class="open" aria-hidden="true"><span class="it">Apri il modulo</span><span class="en">Open module</span> <i>→</i></span>
+        </a>
+        <div class="info"><div class="num">02 · <span class="it">3 idee</span><span class="en">3 ideas</span></div><h2><a href="#module-2" data-open="2"><span class="it">Le emozioni</span><span class="en">Emotions</span></a></h2><p><span class="it">Due manopole separate, un allarme e un vigile del fuoco: come leggere le emozioni senza farsi guidare.</span><span class="en">Two separate dials, an alarm and a firefighter: how to read emotions without being led by them.</span></p><div class="tags"><span class="it">Psicologia positiva · Profili · Metacognizione</span><span class="en">Positive psychology · Profiles · Metacognition</span></div></div>
+      </article>
+  <div class="link"><b></b></div>
+  <article class="card glass m3" data-item data-open="3">
+        <a class="shot" href="#module-3" data-open="3" aria-label="Apri il modulo 3">
+          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M30 160 C90 40 130 40 170 100 S250 160 290 150" fill="none" stroke="#7a7064" stroke-width="1.6" stroke-dasharray="4 6"/><path d="M30 168 C120 150 210 90 290 46" fill="none" stroke="#56799f" stroke-width="2.4" stroke-linecap="round"/><circle cx="290" cy="46" r="6" fill="#56799f"/></svg>
+          <span class="open" aria-hidden="true"><span class="it">Apri il modulo</span><span class="en">Open module</span> <i>→</i></span>
+        </a>
+        <div class="info"><div class="num">03 · <span class="it">3 idee</span><span class="en">3 ideas</span></div><h2><a href="#module-3" data-open="3"><span class="it">Amore e legami</span><span class="en">Love and bonds</span></a></h2><p><span class="it">Lo studio più lungo sulla felicità dice una cosa sola: contano le relazioni.</span><span class="en">The longest study on happiness says one thing: relationships matter.</span></p><div class="tags"><span class="it">Harvard Study · Ossitocina · Due amori</span><span class="en">Harvard Study · Oxytocin · Two loves</span></div></div>
+      </article>
+  <div class="link"><b></b></div>
+  <article class="card glass m4" data-item data-open="4">
+        <a class="shot" href="#module-4" data-open="4" aria-label="Apri il modulo 4">
+          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#5a8d6c" stroke-width="1.4"><circle cx="160" cy="100" r="84" opacity=".5"/><circle cx="160" cy="100" r="54"/></g><circle cx="160" cy="100" r="24" fill="rgba(255,255,255,.75)" stroke="#5a8d6c" stroke-width="1.6"/><g fill="#5a8d6c"><circle cx="152" cy="96" r="4"/><circle cx="167" cy="102" r="4"/><circle cx="157" cy="110" r="4"/></g><g fill="#7a7064" opacity=".5"><circle cx="110" cy="70" r="3"/><circle cx="214" cy="80" r="3"/><circle cx="120" cy="140" r="3"/><circle cx="206" cy="134" r="3"/><circle cx="84" cy="100" r="2.4"/><circle cx="238" cy="104" r="2.4"/><circle cx="160" cy="24" r="2.4"/><circle cx="160" cy="176" r="2.4"/></g></svg>
+          <span class="open" aria-hidden="true"><span class="it">Apri il modulo</span><span class="en">Open module</span> <i>→</i></span>
+        </a>
+        <div class="info"><div class="num">04 · <span class="it">4 idee</span><span class="en">4 ideas</span></div><h2><a href="#module-4" data-open="4"><span class="it">Amicizia e solitudine</span><span class="en">Friendship and loneliness</span></a></h2><p><span class="it">Perdono, amici veri e i due nemici silenziosi della felicità: solitudine e confronto.</span><span class="en">Forgiveness, real friends and happiness's two silent enemies: loneliness and comparison.</span></p><div class="tags"><span class="it">Perdono · Solitudine · Confronto · Amicizia</span><span class="en">Forgiveness · Loneliness · Comparison · Friendship</span></div></div>
+      </article>
+  <div class="link"><b></b></div>
+  <article class="card glass m5" data-item data-open="5">
+        <a class="shot" href="#module-5" data-open="5" aria-label="Apri il modulo 5">
+          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M40 170 C80 80 130 64 190 58 S270 54 290 54" fill="none" stroke="#8468ac" stroke-width="2.4" stroke-linecap="round"/><g fill="rgba(255,255,255,.7)" stroke="#8468ac" stroke-width="1.4"><ellipse cx="96" cy="150" rx="26" ry="8"/><ellipse cx="96" cy="140" rx="26" ry="8"/><ellipse cx="96" cy="130" rx="26" ry="8"/><ellipse cx="96" cy="120" rx="26" ry="8"/></g></svg>
+          <span class="open" aria-hidden="true"><span class="it">Apri il modulo</span><span class="en">Open module</span> <i>→</i></span>
+        </a>
+        <div class="info"><div class="num">05 · <span class="it">4 idee</span><span class="en">4 ideas</span></div><h2><a href="#module-5" data-open="5"><span class="it">Soldi, potere e fama</span><span class="en">Money, power and fame</span></a></h2><p><span class="it">I quattro sostituti della felicità, e perché il modo migliore di spendere è per qualcun altro.</span><span class="en">The four substitutes for happiness, and why the best way to spend is on someone else.</span></p><div class="tags"><span class="it">Idoli · Soldi · Generosità · Lavoro</span><span class="en">Idols · Money · Generosity · Work</span></div></div>
+      </article>
+  <div class="link"><b></b></div>
+  <article class="card glass m6" data-item data-open="6">
+        <a class="shot" href="#module-6" data-open="6" aria-label="Apri il modulo 6">
+          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M30 160 C80 50 120 44 150 60 S240 140 290 150" fill="none" stroke="#7a7064" stroke-width="1.6" stroke-dasharray="4 6"/><path d="M30 170 C120 150 200 100 290 40" fill="none" stroke="#ac7744" stroke-width="2.4" stroke-linecap="round"/><circle cx="290" cy="40" r="6" fill="#ac7744"/></svg>
+          <span class="open" aria-hidden="true"><span class="it">Apri il modulo</span><span class="en">Open module</span> <i>→</i></span>
+        </a>
+        <div class="info"><div class="num">06 · <span class="it">3 idee</span><span class="en">3 ideas</span></div><h2><a href="#module-6" data-open="6"><span class="it">Il futuro e il significato</span><span class="en">The future and meaning</span></a></h2><p><span class="it">Da innovatore a mentore, i cambiamenti come corridoi e le tre fonti del significato.</span><span class="en">From innovator to mentor, transitions as corridors and the three sources of meaning.</span></p><div class="tags"><span class="it">Arco della vita · Transizioni · Significato</span><span class="en">Arc of life · Transitions · Meaning</span></div></div>
+      </article>
+  <div class="link"><b></b></div>
+  <article class="card glass m7" data-item data-open="7">
+        <a class="shot" href="#module-7" data-open="7" aria-label="Apri cosa porto nel team">
+          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="rgba(122,96,60,.45)" stroke-width="1.2"><path d="M160 46 L208 73 L208 127 L160 154 L112 127 L112 73 Z"/><path d="M160 46 L160 154 M112 73 L208 127 M208 73 L112 127"/></g><g stroke="#7a603c" stroke-width="1.4"><circle cx="160" cy="46" r="9" fill="#f6e5b9"/><circle cx="208" cy="73" r="9" fill="#f5d8ca"/><circle cx="208" cy="127" r="9" fill="#d9e3f0"/><circle cx="160" cy="154" r="9" fill="#d8e8da"/><circle cx="112" cy="127" r="9" fill="#e5dcef"/><circle cx="112" cy="73" r="9" fill="#f2dcc4"/></g></svg>
+          <span class="open" aria-hidden="true"><span class="it">Apri</span><span class="en">Open</span> <i>→</i></span>
+        </a>
+        <div class="info"><div class="num">07 · <span class="it">Per chiudere</span><span class="en">To close</span></div><h2><a href="#module-7" data-open="7"><span class="it">Cosa porto nel team</span><span class="en">What I bring to the team</span></a></h2><p><span class="it">Tutto il corso tradotto in sei cose che un leader può fare da domani.</span><span class="en">The whole course translated into six things a leader can start doing tomorrow.</span></p><div class="tags">Leadership · <span class="it">Grazie</span><span class="en">Thank you</span></div></div>
+      </article>
+  <div class="link"><b></b></div>
+  <div class="card outro" data-item>
+        <h2><span class="it">Grazie</span><span class="en">Thank you</span></h2>
+        <p><span class="it">Grazie a <a class="bw" href="https://bobw.co/" target="_blank" rel="noopener">Bob W.</a> per avermi dato la possibilità di seguire questo corso. L'ultima lezione di Brooks è condividere quello che si impara: questa pagina è il mio modo di farlo.</span><span class="en">Thank you to <a class="bw" href="https://bobw.co/" target="_blank" rel="noopener">Bob W.</a> for giving me the opportunity to take this course. Brooks's last lesson is to share what you learn: this page is my way of doing it.</span></p>
+        <p>Marvin</p>
+      </div>
+</section>
+
+<div class="topbar"><button type="button" class="pill glass xbtn" id="xclose" data-close hidden>Close ✕</button><div class="lang glass" role="group" aria-label="Lingua / Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="it" aria-pressed="false">IT</button></div></div>
+
+<div class="counter glass" id="counter">01 / 07</div>
+
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-label="Modulo">
+  <div class="sheet" id="sheet" tabindex="-1"></div>
+</div>
+
+<!-- ===== Contenuti dei moduli ===== -->
+<template id="t1">
+  <div class="ph"><div class="num">MODULO 01</div><h2>La felicità non è un'emozione: si gestisce</h2><p>Il primo modulo ribalta l'idea comune. Non si tratta di "sentirsi bene", ma di costruire abitudini, come si fa con la salute.</p></div>
+  <div class="blk">
+    <div><h3>Le emozioni sono indizi, non la meta</h3><p>Brooks paragona le emozioni al profumo del pranzo della domenica: ti dicono che il pranzo c'è, ma non sono il pranzo. Chi insegue solo la sensazione di stare bene, insegue il profumo.</p><p>Per questo l'obiettivo non è "essere felici", ma diventare <b>un po' più felici</b> nel tempo.</p><div class="ex"><span class="k">Esempio</span>Una serata in discoteca dà una bella sensazione che il lunedì è già sparita. Una cena fissa con gli amici ogni settimana lascia qualcosa che resta.</div></div>
+    <div class="fig"><div class="bar3"><div style="width:50%;background:rgba(255,255,255,.95)"><b>~50%</b>genetica</div><div style="width:25%;background:rgba(255,255,255,.6)"><b>~25%</b>circostanze</div><div style="width:25%;background:var(--acc);color:#fff"><b>~25%</b>abitudini</div></div><p class="cap">Da cosa dipende la felicità secondo le stime citate da Brooks. Valori indicativi: il punto è che una parte importante dipende da noi.</p></div>
+  </div>
+  <div class="blk">
+    <div><h3>Le circostanze passano, le abitudini restano</h3><p>Un evento bello, come un premio o un aumento, dà una spinta forte ma breve: dopo qualche settimana torni al livello di prima. Si chiama <b>adattamento edonico</b>.</p><p>Un'abitudine invece cresce piano e non si spegne. Come la corsa: un allenamento non cambia niente, tre mesi sì.</p><div class="ex"><span class="k">Esempio</span>L'aumento di gennaio a marzo è già normale. La passeggiata dopo pranzo con un collega, dopo un anno, è una delle parti migliori della giornata.</div></div>
+    <div class="fig"><svg viewBox="0 0 320 170" role="img" aria-label="Un evento fa salire la felicità di colpo e poi la riporta giù; un'abitudine la fa salire piano e in modo stabile"><line x1="12" y1="150" x2="310" y2="150" stroke="rgba(122,104,80,.35)"/><line x1="12" y1="112" x2="310" y2="112" stroke="rgba(122,104,80,.35)" stroke-dasharray="3 5"/><path d="M12 112 L82 112 L96 28 C130 34 170 100 310 110" fill="none" stroke="#7a7064" stroke-width="2" stroke-dasharray="5 5"/><path d="M12 112 C110 106 210 76 310 46" fill="none" stroke="var(--acc)" stroke-width="2.6" stroke-linecap="round"/><circle cx="310" cy="46" r="5" fill="var(--acc)"/></svg><div class="leg"><span class="q"><i></i>Un evento (aumento, premio)</span><span><i></i>Un'abitudine</span></div><p class="cap">Andamento indicativo nel tempo. La linea tratteggiata orizzontale è il livello di partenza.</p></div>
+  </div>
+  <div class="blk">
+    <div><h3>I tre macronutrienti</h3><p>Come una dieta ha carboidrati, proteine e grassi, la felicità ha tre ingredienti. Se ne manca uno sei "malnutrito", anche se gli altri due abbondano.</p><div class="ex"><span class="k">Esempio</span>Un lavoro che paga bene e dà soddisfazione, ma di cui non capisci lo scopo, lascia un vuoto: manca il terzo ingrediente.</div></div>
+    <div class="list">
+      <div class="li"><svg viewBox="0 0 44 44"><circle cx="17" cy="22" r="12" fill="none" stroke="var(--acc)" stroke-width="1.6"/><circle cx="27" cy="22" r="12" fill="none" stroke="var(--acc)" stroke-width="1.6"/></svg><div><b>Piacere</b><span>Piacere + persone + ricordo. Brooks consiglia di evitare i piaceri in solitudine e trasformarli in rituali condivisi.</span></div></div>
+      <div class="li"><svg viewBox="0 0 44 44"><path d="M6 36 L17 25 L24 30 L38 10" fill="none" stroke="var(--acc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Soddisfazione</b><span>La gioia che arriva dopo la fatica. Svanisce in fretta e subito vuoi il traguardo dopo.</span></div></div>
+      <div class="li"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="16" fill="none" stroke="var(--acc)" stroke-width="1.6"/><path d="M22 10 L26 22 L22 34 L18 22 Z" fill="var(--acc)"/></svg><div><b>Significato</b><span>Sapere perché fai quello che fai. Il più importante dei tre (modulo 6).</span></div></div>
+    </div>
+  </div>
+  <div class="blk">
+    <div><h3>La formula della soddisfazione</h3><p><b>Soddisfazione = quello che hai ÷ quello che vuoi.</b></p><p>Puoi avere di più o volere di meno. La prima è una corsa senza fine. La seconda, dice Brooks, funziona molto meglio.</p><div class="ex"><span class="k">Esempio</span>Se desideri sempre il telefono nuovo, anche con un ottimo telefono sei insoddisfatto. Se smetti di desiderarlo, quello che hai ti basta.</div></div>
+    <div class="fig"><div class="ctl"><label for="h">Quello che hai <span id="hv"></span></label><input id="h" type="range" min="1" max="10" value="6"></div><div class="ctl"><label for="w">Quello che vuoi <span id="wv"></span></label><input id="w" type="range" min="1" max="10" value="9"></div><div class="meter"><span id="sm"></span></div><p class="out" id="so"></p><p class="cap">Prova a muovere solo il secondo cursore verso sinistra.</p></div>
+  </div>
+</template>
+
+<template id="t2">
+  <div class="ph"><div class="num">MODULO 02</div><h2>Le emozioni sono spie del cruscotto</h2><p>Vanno lette, non obbedite. Il secondo modulo spiega da dove nascono e perché quelle negative non sono un nemico.</p></div>
+  <div class="blk">
+    <div><h3>Dalla riparazione all'allenamento</h3><p>Per decenni la psicologia si è occupata solo di curare chi stava male. Alla fine degli anni '90, con Martin Seligman, nasce la <b>psicologia positiva</b>: studiare cosa fa stare bene le persone.</p><p>È la differenza tra un meccanico che ripara l'auto quando si rompe e un pilota che impara a guidarla meglio.</p></div>
+    <div class="duo"><div><b>Psicologia classica</b>Cosa non va? Come lo curo?</div><div class="hi"><b>Psicologia positiva</b>Cosa funziona? Come lo faccio crescere?</div></div>
+  </div>
+  <div class="blk">
+    <div><h3>Positive e negative sono due manopole</h3><p>Non sono i due capi della stessa corda, ma due manopole indipendenti, come bassi e acuti di uno stereo. Per questo <b>felicità e infelicità non sono contrarie</b>: puoi averle alte entrambe.</p><p>Dalla combinazione nascono quattro profili. Nessuno è sbagliato: conta conoscere il proprio.</p><div class="ctl"><label for="pa">Emozioni positive <span id="pv"></span></label><input id="pa" type="range" min="0" max="10" value="7"></div><div class="ctl"><label for="na">Emozioni negative <span id="nv"></span></label><input id="na" type="range" min="0" max="10" value="3"></div><div class="ex"><span class="k">Da leader</span>L'entusiasta presenta l'idea nuova, il poeta trova i punti deboli, il giudice decide quando c'è tensione. Un team non ha bisogno che siano tutti entusiasti.</div></div>
+    <div class="fig"><div class="quad"><div class="ax v">alte positive</div><div class="c" id="q1"><b>L'entusiasta</b>Trascina gli altri. Rischia di sottovalutare i problemi.</div><div class="c" id="q2"><b>Lo scienziato pazzo</b>Vive tutto al massimo. Creativo, a volte imprevedibile.</div><div class="ax v">basse positive</div><div class="c" id="q3"><b>Il giudice</b>Calmo e razionale. Ideale per decidere sotto pressione.</div><div class="c" id="q4"><b>Il poeta</b>Profondo e sensibile. Vede per primo cosa non va.</div><div></div><div class="ax">basse negative</div><div class="ax">alte negative</div></div></div>
+  </div>
+  <div class="blk">
+    <div><h3>L'allarme e il vigile del fuoco</h3><p>Le emozioni nascono nel <b>sistema limbico</b>. L'amigdala è l'allarme antincendio: scatta prima che tu possa pensare. La <b>corteccia prefrontale</b> è il vigile del fuoco: arriva dopo e valuta se l'incendio c'è davvero.</p><p>La chiave è la <b>metacognizione</b>: osservare l'emozione da fuori, così decide il vigile e non l'allarme. E le emozioni negative restano utili: il dolore sulla pentola calda ti salva la mano.</p><div class="ex"><span class="k">Consiglio pratico</span>Quando provi un'emozione forte, scrivila: come si chiama, cosa l'ha accesa, cosa vorresti fare. Una mail sgradevole il venerdì sera? Rispondi il lunedì.</div></div>
+    <div class="fig flow"><div class="t">Senza metacognizione</div><div class="fl"><div><b>Mail sgradevole</b>stimolo</div><span>→</span><div class="hot"><b>Amigdala</b>allarme, rabbia</div><span>→</span><div><b>Risposta di getto</b>di cui ti penti</div></div><div class="t">Con metacognizione</div><div class="fl"><div><b>Mail sgradevole</b>stimolo</div><span>→</span><div class="hot"><b>Corteccia</b>"cosa provo?"</div><span>→</span><div><b>Risposta calma</b>il giorno dopo</div></div></div>
+  </div>
+</template>
+
+<template id="t3">
+  <div class="ph"><div class="num">MODULO 03</div><h2>La felicità vera si costruisce in compagnia</h2><p>Il messaggio più forte di tutto il corso: soldi e successo contano molto meno delle relazioni.</p></div>
+  <div class="blk">
+    <div><h3>Lo studio più lungo sulla felicità</h3><p>Lo <b>Harvard Study of Adult Development</b> segue le stesse persone dal 1938, e oggi anche i loro figli. La conclusione: il miglior indicatore di una vecchiaia sana e felice è la <b>qualità delle relazioni</b>. A 50 anni contava più del colesterolo.</p><p>George Vaillant, che lo ha diretto per decenni, l'ha riassunto così: la felicità è amore.</p></div>
+    <div class="fig"><div class="tl"><div class="ln"><i style="left:0"></i><i style="left:calc(50% - 6px)"></i><i style="right:0"></i></div><div class="mk"><span><b>1938</b>inizio</span><span style="text-align:center"><b>80+</b>anni di dati</span><span style="text-align:right"><b>oggi</b>anche i figli</span></div></div><p class="cap" style="margin-top:22px">Le abitudini che lo studio collega a una vita lunga e felice:</p><div class="chips"><span>Non fumare</span><span>Bere poco</span><span>Movimento</span><span>Peso sano</span><span>Continuare a imparare</span><span>Relazione stabile</span><span>Affrontare i problemi con maturità</span></div></div>
+  </div>
+  <div class="blk">
+    <div><h3>Due tipi di amore</h3><p>L'<b>amore passionale</b>, quello dell'innamoramento, è intenso ma per natura dura poco. L'<b>amore di compagnia</b>, fatto di fiducia e quotidianità, parte piano e cresce negli anni. È questo che rende felici a lungo.</p><p>Le coppie più felici sono quelle in cui il partner è anche il migliore amico.</p></div>
+    <div class="fig"><svg viewBox="0 0 320 170" role="img" aria-label="L'amore passionale sale presto e poi cala, l'amore di compagnia cresce piano negli anni"><line x1="12" y1="150" x2="310" y2="150" stroke="rgba(122,104,80,.35)"/><path d="M12 140 C40 20 70 20 110 70 S220 130 310 135" fill="none" stroke="#7a7064" stroke-width="2" stroke-dasharray="5 5"/><path d="M12 146 C100 136 200 80 310 38" fill="none" stroke="var(--acc)" stroke-width="2.6" stroke-linecap="round"/><circle cx="310" cy="38" r="5" fill="var(--acc)"/></svg><div class="leg"><span class="q"><i></i>Passionale</span><span><i></i>Di compagnia</span><span style="color:var(--ink-soft)">→ anni insieme</span></div></div>
+  </div>
+  <div class="blk">
+    <div><h3>Ossitocina e il coraggio di esporsi</h3><p>L'ossitocina è l'ormone del legame: si libera con il contatto, lo sguardo, il tempo passato vicini. Crea fiducia. Per questo le relazioni dal vivo valgono più di quelle a distanza.</p><p>E ogni legame vero chiede un <b>rischio</b>: esporsi, rischiare un rifiuto. Chi non rischia mai si protegge anche dalla felicità.</p><div class="ex"><span class="k">Esempio</span>Dieci minuti a settimana con ogni persona del team, non solo di lavoro, sono un conto in banca di fiducia per i momenti difficili.</div></div>
+    <div class="steps"><div><i>1</i><span><b>Messaggio in chat</b>: utile, crea poco legame</span></div><div><i>2</i><span><b>Videochiamata</b>: meglio, vedi le espressioni</span></div><div><i>3</i><span><b>Caffè dal vivo</b>: sguardo, voce, presenza</span></div><div><i>4</i><span><b>Un'esperienza insieme</b>: diventa un ricordo condiviso</span></div></div>
+  </div>
+</template>
+
+<template id="t4">
+  <div class="ph"><div class="num">MODULO 04</div><h2>Perdono, amici veri e due nemici silenziosi</h2><p>Il quarto modulo continua sulle relazioni: cosa le fa crescere e cosa le rovina senza che ce ne accorgiamo.</p></div>
+  <div class="blk">
+    <div><h3>Il perdono è per chi perdona</h3><p>Perdonare non vuol dire dire che andava bene. Vuol dire smettere di portarsi dietro il peso. Il rancore è uno zaino pieno di sassi: chi ti ha ferito non lo sente, tu sì.</p><p>Vale anche al contrario: chiedere scusa rende più felici.</p></div>
+    <div class="ex" style="margin:0"><span class="k">Esempio</span>Un collega ti ha scavalcato con il responsabile mesi fa e ogni riunione con lui ti innervosisce. Parlarne una volta, chiarire e chiudere la questione ti libera da un nervosismo che pagavi tu ogni giorno.</div>
+  </div>
+  <div class="blk">
+    <div><h3>La solitudine fa male come il fumo</h3><p>Il paragone che si usa spesso è circa <b>15 sigarette al giorno</b>. E solitudine non vuol dire stare da soli: si può essere soli in un open space, se non c'è nessuno con cui parlare davvero.</p><div class="ex"><span class="k">Da leader</span>Chi lavora da remoto o con turni sfalsati rischia di isolarsi. Un pranzo di team al mese, o un messaggio personale ogni tanto, cambia molto.</div></div>
+    <div class="fig"><div class="cigs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p class="cap">15 sigarette: il paragone usato per l'effetto della solitudine sulla salute.</p></div>
+  </div>
+  <div class="blk">
+    <div><h3>Il confronto ruba la gioia</h3><p>Confrontiamo la nostra vita intera con i momenti migliori degli altri: il nostro dietro le quinte con il loro spettacolo.</p><div class="ex"><span class="k">Consiglio pratico</span>Confrontati con te stesso di un anno fa, non con gli altri. E limita i social, che sono una macchina da confronti.</div></div>
+    <div class="duo"><div><b>La tua vita</b>Tutti i giorni, anche quelli storti, le liti, la stanchezza.</div><div class="hi"><b>Il loro profilo</b>Solo la vacanza, la promozione, la foto venuta bene.</div></div>
+  </div>
+  <div class="blk">
+    <div><h3>Amici "d'affari" e amici veri</h3><p>Gli <b>amici d'affari</b> sono relazioni utili, basate su uno scambio. Gli <b>amici veri</b> li ami per quello che sono. Con la carriera molti si ritrovano pieni dei primi e senza i secondi.</p><p>Ne bastano pochi, ma servono. E l'amicizia va programmata: se aspetti che capiti, non capita.</p><div class="ex"><span class="k">Esempio</span>Un appuntamento fisso ogni due settimane con un amico, segnato in calendario come una riunione.</div></div>
+    <div class="fig"><svg viewBox="0 0 300 210" role="img" aria-label="Cerchi concentrici: al centro pochi amici veri, all'esterno tanti contatti"><circle cx="150" cy="105" r="98" fill="rgba(255,255,255,.35)" stroke="var(--acc)" stroke-width="1" opacity=".7"/><circle cx="150" cy="105" r="62" fill="rgba(255,255,255,.5)" stroke="var(--acc)" stroke-width="1.2"/><circle cx="150" cy="105" r="28" fill="rgba(255,255,255,.9)" stroke="var(--acc)" stroke-width="1.6"/><g fill="var(--acc)"><circle cx="142" cy="100" r="4.5"/><circle cx="158" cy="106" r="4.5"/><circle cx="147" cy="115" r="4.5"/></g><g fill="#7a7064" opacity=".55"><circle cx="104" cy="76" r="3.4"/><circle cx="196" cy="86" r="3.4"/><circle cx="118" cy="148" r="3.4"/><circle cx="186" cy="142" r="3.4"/><circle cx="102" cy="116" r="3.4"/><circle cx="198" cy="118" r="3.4"/></g><g fill="#7a7064" opacity=".35"><circle cx="64" cy="66" r="2.6"/><circle cx="238" cy="66" r="2.6"/><circle cx="58" cy="128" r="2.6"/><circle cx="244" cy="136" r="2.6"/><circle cx="92" cy="184" r="2.6"/><circle cx="210" cy="184" r="2.6"/><circle cx="150" cy="16" r="2.6"/><circle cx="150" cy="194" r="2.6"/></g></svg><div class="leg"><span><i></i>Al centro: pochi amici veri</span><span class="q"><i></i>Fuori: tanti contatti</span></div></div>
+  </div>
+</template>
+
+<template id="t5">
+  <div class="ph"><div class="num">MODULO 05</div><h2>Soldi, potere, piacere e fama promettono, ma non mantengono</h2><p>Il quinto modulo parla delle ricompense del mondo e di come usarle senza diventarne schiavi.</p></div>
+  <div class="blk">
+    <div><h3>I quattro sostituti della felicità</h3><p>Brooks li chiama anche "idoli". Danno una scarica breve e poi ne vuoi ancora, come l'acqua di mare quando hai sete.</p><p>Non sono il male in sé. Il problema è quando diventano <b>lo scopo</b> invece di uno strumento.</p><div class="ex"><span class="k">Esempio</span>Lavorare per guadagnare di più è normale. Ma se ogni aumento ti lascia uguale e pensi già al prossimo, i soldi sono diventati un idolo.</div></div>
+    <div class="tiles"><div><b>Soldi</b><em>Promettono sicurezza.</em>Ne vuoi sempre di più.</div><div><b>Potere</b><em>Promette controllo.</em>Spesso isola.</div><div><b>Piacere</b><em>Promette gioia.</em>Dura un attimo.</div><div><b>Fama</b><em>Promette di essere amati.</em>Ti lega al giudizio altrui.</div></div>
+  </div>
+  <div class="blk">
+    <div><h3>I soldi aiutano, fino a un certo punto</h3><p>All'inizio tolgono preoccupazioni e aumentano molto la felicità. Oltre una certa soglia l'effetto si riduce parecchio. Conta di più <b>come</b> li spendi: in <b>esperienze</b> invece che oggetti, per <b>comprare tempo</b>, e soprattutto <b>per gli altri</b>.</p></div>
+    <div class="fig"><svg viewBox="0 0 320 170" role="img" aria-label="La felicità sale con i soldi all'inizio e poi si appiattisce"><line x1="14" y1="150" x2="310" y2="150" stroke="rgba(122,104,80,.35)"/><line x1="14" y1="150" x2="14" y2="12" stroke="rgba(122,104,80,.35)"/><line x1="140" y1="46" x2="140" y2="150" stroke="rgba(122,104,80,.45)" stroke-dasharray="3 5"/><path d="M14 145 C50 70 100 50 160 44 S260 38 310 36" fill="none" stroke="var(--acc)" stroke-width="2.6" stroke-linecap="round"/></svg><div class="leg"><span><i></i>Felicità</span><span style="color:var(--ink-soft)">→ reddito</span></div><p class="cap">Andamento indicativo. Oltre la linea tratteggiata, ogni euro in più rende sempre meno felici.</p></div>
+  </div>
+  <div class="blk">
+    <div><h3>Dare rende più felici che ricevere</h3><p>In un esperimento famoso alle persone venivano dati 5 o 20 dollari da spendere in giornata. Chi li spendeva per qualcun altro era più felice di chi li spendeva per sé, <b>qualunque fosse la cifra</b>.</p><p>La generosità è un ponte verso gli altri, e si torna al cuore del corso: le relazioni.</p><div class="ex"><span class="k">Consiglio pratico</span>Dona tempo oltre che soldi. Il volontariato fatto insieme unisce due cose che rendono felici: aiutare e stare in compagnia. Anche offrire la colazione al team il lunedì funziona.</div></div>
+    <div class="steps"><div><i>1</i><span>Ricevi <b>5 o 20 dollari</b></span></div><div><i>2</i><span>Li spendi <b>per te</b> oppure <b>per qualcun altro</b></span></div><div><i>3</i><span>A fine giornata è più felice <b>chi li ha dati</b>, con qualsiasi cifra</span></div></div>
+  </div>
+  <div class="blk">
+    <div><h3>La reverse bucket list e il lavoro</h3><p>Invece della lista delle cose da fare prima di morire, Brooks propone <b>la lista dei desideri da lasciare andare</b>: la formula del modulo 1 messa in pratica.</p><p>Il lavoro rende felici con due ingredienti: <b>successo guadagnato</b> (il risultato è merito tuo) e <b>servizio</b> (il tuo lavoro aiuta qualcuno). Un cameriere che sente di rendere speciale la serata dei clienti può essere più felice di un dirigente che non sa a chi serve il suo lavoro.</p></div>
+    <div class="duo"><div><b>Bucket list</b>Vedere il Giappone. Una casa più grande. La macchina nuova.</div><div class="hi"><b>Reverse bucket list</b>Smettere di voler avere l'ultima parola. Smettere di cambiare telefono ogni anno. Smettere di cercare l'approvazione di tutti.</div></div>
+  </div>
+</template>
+
+<template id="t6">
+  <div class="ph"><div class="num">MODULO 06</div><h2>Da innovatore a mentore, e il proprio perché</h2><p>L'ultimo modulo guarda alla vita intera: come cambiano i nostri punti di forza, come attraversare i cambiamenti e dove nasce il significato.</p></div>
+  <div class="blk">
+    <div><h3>Due tipi di intelligenza</h3><p>L'<b>intelligenza fluida</b> (velocità, idee nuove) arriva al picco presto e poi cala. L'<b>intelligenza cristallizzata</b> (esperienza, saper insegnare) continua a crescere.</p><p>Darwin restò legato alla fase da innovatore e finì la vita insoddisfatto. Bach passò a insegnare e comporre per gli altri, e visse la vecchiaia con serenità.</p><div class="ex"><span class="k">Da leader</span>Un collega con vent'anni di esperienza è più lento sulle novità. Se diventa il mentore dei nuovi assunti, il team guadagna e lui ritrova un ruolo che lo valorizza.</div></div>
+    <div class="fig"><svg viewBox="0 0 320 170" role="img" aria-label="L'intelligenza fluida sale e poi cala, quella cristallizzata sale fino alla fine"><line x1="12" y1="150" x2="310" y2="150" stroke="rgba(122,104,80,.35)"/><path d="M12 140 C60 40 100 30 130 42 S230 112 310 128" fill="none" stroke="#7a7064" stroke-width="2" stroke-dasharray="5 5"/><path d="M12 146 C100 128 190 80 310 32" fill="none" stroke="var(--acc)" stroke-width="2.6" stroke-linecap="round"/><circle cx="310" cy="32" r="5" fill="var(--acc)"/></svg><div class="leg"><span class="q"><i></i>Fluida: innovatore</span><span><i></i>Cristallizzata: mentore</span><span style="color:var(--ink-soft)">→ età</span></div></div>
+  </div>
+  <div class="blk">
+    <div><h3>Le transizioni sono un corridoio</h3><p>Cambio di lavoro, di città, la fine di una relazione: sono come il corridoio tra due stanze. Scomodo, a volte buio, ma l'unica strada per passare da una all'altra.</p><p>Brooks consiglia di attraversarli invece di saltarli a tutti i costi: è lì che si cresce.</p><div class="ex"><span class="k">Esempio</span>Chi cambia settore passa mesi in cui non è più il vecchio sé e non è ancora il nuovo. Sono i più pesanti, ma anche quelli in cui impara di più.</div></div>
+    <div class="room"><div><b>Prima</b>la fase che lasci</div><div class="mid"><b>Il corridoio</b>scomodo, ma qui si cresce</div><div class="end"><b>Dopo</b>la fase nuova</div></div>
+  </div>
+  <div class="blk">
+    <div><h3>Il significato nasce da tre cose</h3><p><b>Coerenza</b>: la tua vita ha senso per te. <b>Scopo</b>: hai una direzione. <b>Importanza</b>: conti per qualcuno.</p><p>Due domande da farsi e scrivere: <b>perché sono vivo?</b> e <b>per cosa sarei disposto a sacrificarmi?</b> Se la risposta non arriva subito va bene: conta continuare a farsele.</p><div class="ex"><span class="k">La saggezza finale</span>Condividere quello che si è imparato: insegnare la felicità agli altri rende più felici anche te.</div></div>
+    <div class="pil"><div style="min-height:120px"><b>Coerenza</b>ha senso per me</div><div style="min-height:160px"><b>Scopo</b>so dove vado</div><div style="min-height:200px"><b>Importanza</b>conto per qualcuno</div></div>
+  </div>
+</template>
+
+<template id="t7">
+  <div class="ph"><div class="num">PER CHIUDERE</div><h2>Cosa porto nel team</h2><p><span class="it">Tutto il corso tradotto in sei cose che un leader può fare da domani.</span><span class="en">The whole course translated into six things a leader can start doing tomorrow.</span></p></div>
+  <div class="six">
+    <div class="m2" style="border-top:3px solid var(--acc)"><b>Conoscersi</b>Sapere qual è il mio profilo emotivo e come reagisco sotto pressione.<small>Modulo 2</small></div>
+    <div class="m3" style="border-top:3px solid var(--acc)"><b>Creare legami veri</b>Tempo e attenzione per le persone, non solo per i task.<small>Moduli 3 e 4</small></div>
+    <div class="m1" style="border-top:3px solid var(--acc)"><b>Riconoscere lo sforzo</b>Il merito riconosciuto trasforma la fatica in soddisfazione.<small>Modulo 1</small></div>
+    <div class="m6" style="border-top:3px solid var(--acc)"><b>Spiegare il perché</b>Un compito con uno scopo chiaro dà significato.<small>Modulo 6</small></div>
+    <div class="m4" style="border-top:3px solid var(--acc)"><b>Valorizzare ognuno</b>L'energia dei nuovi, l'esperienza dei veterani.<small>Modulo 6</small></div>
+    <div class="m5" style="border-top:3px solid var(--acc)"><b>Essere generoso</b>Di tempo, attenzione e merito, prima che di cose.<small>Modulo 5</small></div>
+  </div>
+  <div class="thanks"><h3>Grazie</h3><p>Grazie a <a class="bw" href="https://bobw.co/" target="_blank" rel="noopener">Bob W.</a> per avermi dato la possibilità di seguire questo corso. L'ultima lezione di Brooks è condividere quello che si impara: questa pagina è il mio modo di farlo.</p><p>Marvin</p></div>
+</template>
+
+<template id="t1en">
+  <div class="ph"><div class="num">MODULE 01</div><h2>Happiness is not a feeling: it is something you manage</h2><p>The first module turns the common idea upside down. It is not about "feeling good" but about building habits, the way you look after your health.</p></div>
+  <div class="blk">
+    <div><h3>Feelings are clues, not the goal</h3><p>Brooks compares feelings to the smell of Sunday lunch: they tell you lunch is there, but they are not the lunch. Chasing only the feeling of being well means chasing the smell.</p><p>That is why the goal is not "to be happy" but to become <b>a little happier</b> over time.</p><div class="ex"><span class="k">Example</span>A night out gives a great feeling that has vanished by Monday. A weekly dinner with friends leaves something that lasts.</div></div>
+    <div class="fig"><div class="bar3"><div style="width:50%;background:rgba(255,255,255,.95)"><b>~50%</b>genetics</div><div style="width:25%;background:rgba(255,255,255,.6)"><b>~25%</b>circumstances</div><div style="width:25%;background:var(--acc);color:#fff"><b>~25%</b>habits</div></div><p class="cap">What happiness depends on, according to the estimates Brooks cites. Indicative values: the point is that a large part is up to us.</p></div>
+  </div>
+  <div class="blk">
+    <div><h3>Circumstances fade, habits stay</h3><p>A good event, like an award or a raise, gives a strong but short boost: after a few weeks you are back where you started. This is called <b>hedonic adaptation</b>.</p><p>A habit grows slowly and does not fade. Like running: one workout changes nothing, three months do.</p><div class="ex"><span class="k">Example</span>By March, January's raise already feels normal. A walk after lunch with a colleague, after a year, is one of the best parts of the day.</div></div>
+    <div class="fig"><svg viewBox="0 0 320 170" role="img" aria-label="An event makes happiness jump and then drop back; a habit raises it slowly and steadily"><line x1="12" y1="150" x2="310" y2="150" stroke="rgba(122,104,80,.35)"/><line x1="12" y1="112" x2="310" y2="112" stroke="rgba(122,104,80,.35)" stroke-dasharray="3 5"/><path d="M12 112 L82 112 L96 28 C130 34 170 100 310 110" fill="none" stroke="#7a7064" stroke-width="2" stroke-dasharray="5 5"/><path d="M12 112 C110 106 210 76 310 46" fill="none" stroke="var(--acc)" stroke-width="2.6" stroke-linecap="round"/><circle cx="310" cy="46" r="5" fill="var(--acc)"/></svg><div class="leg"><span class="q"><i></i>An event (raise, award)</span><span><i></i>A habit</span></div><p class="cap">Indicative trend over time. The horizontal dashed line is the starting level.</p></div>
+  </div>
+  <div class="blk">
+    <div><h3>The three macronutrients</h3><p>Just as a diet has carbohydrates, proteins and fats, happiness has three ingredients. If one is missing you are "malnourished", even when the other two are plentiful.</p><div class="ex"><span class="k">Example</span>A job that pays well and is satisfying, but whose purpose you do not understand, leaves a gap: the third ingredient is missing.</div></div>
+    <div class="list">
+      <div class="li"><svg viewBox="0 0 44 44"><circle cx="17" cy="22" r="12" fill="none" stroke="var(--acc)" stroke-width="1.6"/><circle cx="27" cy="22" r="12" fill="none" stroke="var(--acc)" stroke-width="1.6"/></svg><div><b>Enjoyment</b><span>Pleasure + people + memory. Brooks advises avoiding solitary pleasures and turning them into shared rituals.</span></div></div>
+      <div class="li"><svg viewBox="0 0 44 44"><path d="M6 36 L17 25 L24 30 L38 10" fill="none" stroke="var(--acc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Satisfaction</b><span>The joy that comes after effort. It fades quickly, and you immediately want the next goal.</span></div></div>
+      <div class="li"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="16" fill="none" stroke="var(--acc)" stroke-width="1.6"/><path d="M22 10 L26 22 L22 34 L18 22 Z" fill="var(--acc)"/></svg><div><b>Meaning</b><span>Knowing why you do what you do. The most important of the three (module 6).</span></div></div>
+    </div>
+  </div>
+  <div class="blk">
+    <div><h3>The satisfaction formula</h3><p><b>Satisfaction = what you have ÷ what you want.</b></p><p>You can have more or want less. The first is an endless race. The second, says Brooks, works much better.</p><div class="ex"><span class="k">Example</span>If you always want the newest phone, you are dissatisfied even with a great one. If you stop wanting it, what you have is enough.</div></div>
+    <div class="fig"><div class="ctl"><label for="h">What you have <span id="hv"></span></label><input id="h" type="range" min="1" max="10" value="6"></div><div class="ctl"><label for="w">What you want <span id="wv"></span></label><input id="w" type="range" min="1" max="10" value="9"></div><div class="meter"><span id="sm"></span></div><p class="out" id="so"></p><p class="cap">Try moving only the second slider to the left.</p></div>
+  </div>
+</template>
+
+<template id="t2en">
+  <div class="ph"><div class="num">MODULE 02</div><h2>Emotions are dashboard lights</h2><p>Read them, don't obey them. The second module explains where emotions come from and why negative ones are not the enemy.</p></div>
+  <div class="blk">
+    <div><h3>From repair to training</h3><p>For decades psychology focused only on treating people who were unwell. In the late '90s, with Martin Seligman, <b>positive psychology</b> was born: studying what makes people thrive.</p><p>It is the difference between a mechanic who fixes the car when it breaks and a driver who learns to drive it better.</p></div>
+    <div class="duo"><div><b>Classic psychology</b>What is wrong? How do I fix it?</div><div class="hi"><b>Positive psychology</b>What works? How do I make it grow?</div></div>
+  </div>
+  <div class="blk">
+    <div><h3>Positive and negative are two separate dials</h3><p>They are not the two ends of the same rope, but two independent dials, like bass and treble on a stereo. That is why <b>happiness and unhappiness are not opposites</b>: you can have both turned up.</p><p>Their combination gives four profiles. None is wrong: what matters is knowing your own.</p><div class="ctl"><label for="pa">Positive emotions <span id="pv"></span></label><input id="pa" type="range" min="0" max="10" value="7"></div><div class="ctl"><label for="na">Negative emotions <span id="nv"></span></label><input id="na" type="range" min="0" max="10" value="3"></div><div class="ex"><span class="k">As a leader</span>The cheerleader pitches the new idea, the poet spots the weak points, the judge decides when tension rises. A team does not need everyone to be a cheerleader.</div></div>
+    <div class="fig"><div class="quad"><div class="ax v">high positive</div><div class="c" id="q1"><b>The cheerleader</b>Carries others along. May underestimate problems.</div><div class="c" id="q2"><b>The mad scientist</b>Lives everything to the max. Creative, sometimes unpredictable.</div><div class="ax v">low positive</div><div class="c" id="q3"><b>The judge</b>Calm and rational. Ideal for deciding under pressure.</div><div class="c" id="q4"><b>The poet</b>Deep and sensitive. First to see what is wrong.</div><div></div><div class="ax">low negative</div><div class="ax">high negative</div></div></div>
+  </div>
+  <div class="blk">
+    <div><h3>The alarm and the firefighter</h3><p>Emotions start in the <b>limbic system</b>. The amygdala is the fire alarm: it goes off before you can think. The <b>prefrontal cortex</b> is the firefighter: it arrives later and checks whether there really is a fire.</p><p>The key is <b>metacognition</b>: watching the emotion from the outside, so the firefighter decides, not the alarm. And negative emotions stay useful: the pain from a hot pan saves your hand.</p><div class="ex"><span class="k">Practical tip</span>When you feel a strong emotion, write it down: what it is called, what triggered it, what you would like to do. A nasty email on Friday evening? Reply on Monday.</div></div>
+    <div class="fig flow"><div class="t">Without metacognition</div><div class="fl"><div><b>Nasty email</b>trigger</div><span>→</span><div class="hot"><b>Amygdala</b>alarm, anger</div><span>→</span><div><b>Knee-jerk reply</b>you regret it</div></div><div class="t">With metacognition</div><div class="fl"><div><b>Nasty email</b>trigger</div><span>→</span><div class="hot"><b>Cortex</b>"what am I feeling?"</div><span>→</span><div><b>Calm reply</b>the next day</div></div></div>
+  </div>
+</template>
+
+<template id="t3en">
+  <div class="ph"><div class="num">MODULE 03</div><h2>Real happiness is built together with others</h2><p>The strongest message of the whole course: money and success matter far less than relationships.</p></div>
+  <div class="blk">
+    <div><h3>The longest study ever on happiness</h3><p>The <b>Harvard Study of Adult Development</b> has followed the same people since 1938, and now their children too. The conclusion: the best predictor of a healthy, happy old age is the <b>quality of relationships</b>. At 50 it mattered more than cholesterol.</p><p>George Vaillant, who led it for decades, summed it up like this: happiness is love.</p></div>
+    <div class="fig"><div class="tl"><div class="ln"><i style="left:0"></i><i style="left:calc(50% - 6px)"></i><i style="right:0"></i></div><div class="mk"><span><b>1938</b>start</span><span style="text-align:center"><b>80+</b>years of data</span><span style="text-align:right"><b>today</b>their children too</span></div></div><p class="cap" style="margin-top:22px">Habits the study links to a long and happy life:</p><div class="chips"><span>No smoking</span><span>Little alcohol</span><span>Exercise</span><span>Healthy weight</span><span>Keep learning</span><span>Stable relationship</span><span>Mature coping</span></div></div>
+  </div>
+  <div class="blk">
+    <div><h3>Two kinds of love</h3><p><b>Passionate love</b>, the falling-in-love kind, is intense but by nature short-lived. <b>Companionate love</b>, made of trust and everyday life, starts slowly and grows over the years. That is the one that makes people happy for the long run.</p><p>The happiest couples are those where the partner is also the best friend.</p></div>
+    <div class="fig"><svg viewBox="0 0 320 170" role="img" aria-label="Passionate love rises early and then falls; companionate love grows slowly over the years"><line x1="12" y1="150" x2="310" y2="150" stroke="rgba(122,104,80,.35)"/><path d="M12 140 C40 20 70 20 110 70 S220 130 310 135" fill="none" stroke="#7a7064" stroke-width="2" stroke-dasharray="5 5"/><path d="M12 146 C100 136 200 80 310 38" fill="none" stroke="var(--acc)" stroke-width="2.6" stroke-linecap="round"/><circle cx="310" cy="38" r="5" fill="var(--acc)"/></svg><div class="leg"><span class="q"><i></i>Passionate</span><span><i></i>Companionate</span><span style="color:var(--ink-soft)">→ years together</span></div></div>
+  </div>
+  <div class="blk">
+    <div><h3>Oxytocin and the courage to open up</h3><p>Oxytocin is the bonding hormone: it is released through touch, eye contact and time spent close together. It builds trust. That is why in-person relationships are worth more than distant ones.</p><p>And every real bond asks for a <b>risk</b>: opening up, risking rejection. Those who never take the risk also protect themselves from happiness.</p><div class="ex"><span class="k">Example</span>Ten minutes a week with each person on the team, not only about work, are a bank account of trust for difficult moments.</div></div>
+    <div class="steps"><div><i>1</i><span><b>Chat message</b>: useful, builds little connection</span></div><div><i>2</i><span><b>Video call</b>: better, you see expressions</span></div><div><i>3</i><span><b>Coffee in person</b>: eye contact, voice, presence</span></div><div><i>4</i><span><b>An experience together</b>: it becomes a shared memory</span></div></div>
+  </div>
+</template>
+
+<template id="t4en">
+  <div class="ph"><div class="num">MODULE 04</div><h2>Forgiveness, real friends and two silent enemies</h2><p>The fourth module continues on relationships: what makes them grow and what ruins them without us noticing.</p></div>
+  <div class="blk">
+    <div><h3>Forgiveness is for the one who forgives</h3><p>Forgiving does not mean saying it was fine. It means no longer carrying the weight. A grudge is a backpack full of stones: the person who hurt you does not feel it, you do.</p><p>It works the other way too: apologising makes you happier.</p></div>
+    <div class="ex" style="margin:0"><span class="k">Example</span>Months ago a colleague went over your head to the manager, and every meeting with them makes you tense. Talking about it once, clearing the air and closing the matter frees you from a tension you were paying for every day.</div>
+  </div>
+  <div class="blk">
+    <div><h3>Loneliness hurts like smoking</h3><p>The comparison often used is about <b>15 cigarettes a day</b>. And loneliness does not mean being alone: you can be lonely in an open-plan office if there is no one to really talk to.</p><div class="ex"><span class="k">As a leader</span>People working remotely or on different shifts risk becoming isolated. A team lunch once a month, or a personal message now and then, changes a lot.</div></div>
+    <div class="fig"><div class="cigs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p class="cap">15 cigarettes: the comparison used for the effect of loneliness on health.</p></div>
+  </div>
+  <div class="blk">
+    <div><h3>Comparison steals joy</h3><p>We compare our whole life with other people's best moments: our backstage with their show.</p><div class="ex"><span class="k">Practical tip</span>Compare yourself with who you were a year ago, not with others. And limit social media, which is a comparison machine.</div></div>
+    <div class="duo"><div><b>Your life</b>Every day, including the bad ones, the arguments, the tiredness.</div><div class="hi"><b>Their profile</b>Only the holiday, the promotion, the good photo.</div></div>
+  </div>
+  <div class="blk">
+    <div><h3>"Deal friends" and real friends</h3><p><b>Deal friends</b> are useful relationships based on an exchange. <b>Real friends</b> are people you love for who they are. With a career, many people end up with plenty of the first and none of the second.</p><p>A few are enough, but you need them. And friendship has to be scheduled: if you wait for it to happen, it doesn't.</p><div class="ex"><span class="k">Example</span>A fixed meet-up with a friend every two weeks, in the calendar like a meeting.</div></div>
+    <div class="fig"><svg viewBox="0 0 300 210" role="img" aria-label="Concentric circles: a few real friends at the centre, many contacts outside"><circle cx="150" cy="105" r="98" fill="rgba(255,255,255,.35)" stroke="var(--acc)" stroke-width="1" opacity=".7"/><circle cx="150" cy="105" r="62" fill="rgba(255,255,255,.5)" stroke="var(--acc)" stroke-width="1.2"/><circle cx="150" cy="105" r="28" fill="rgba(255,255,255,.9)" stroke="var(--acc)" stroke-width="1.6"/><g fill="var(--acc)"><circle cx="142" cy="100" r="4.5"/><circle cx="158" cy="106" r="4.5"/><circle cx="147" cy="115" r="4.5"/></g><g fill="#7a7064" opacity=".55"><circle cx="104" cy="76" r="3.4"/><circle cx="196" cy="86" r="3.4"/><circle cx="118" cy="148" r="3.4"/><circle cx="186" cy="142" r="3.4"/><circle cx="102" cy="116" r="3.4"/><circle cx="198" cy="118" r="3.4"/></g><g fill="#7a7064" opacity=".35"><circle cx="64" cy="66" r="2.6"/><circle cx="238" cy="66" r="2.6"/><circle cx="58" cy="128" r="2.6"/><circle cx="244" cy="136" r="2.6"/><circle cx="92" cy="184" r="2.6"/><circle cx="210" cy="184" r="2.6"/><circle cx="150" cy="16" r="2.6"/><circle cx="150" cy="194" r="2.6"/></g></svg><div class="leg"><span><i></i>Centre: a few real friends</span><span class="q"><i></i>Outside: many contacts</span></div></div>
+  </div>
+</template>
+
+<template id="t5en">
+  <div class="ph"><div class="num">MODULE 05</div><h2>Money, power, pleasure and fame promise, but don't deliver</h2><p>The fifth module is about worldly rewards and how to use them without becoming their slave.</p></div>
+  <div class="blk">
+    <div><h3>The four substitutes for happiness</h3><p>Brooks also calls them "idols". They give a short rush and then you want more, like seawater when you are thirsty.</p><p>They are not bad in themselves. The problem is when they become <b>the goal</b> instead of a tool.</p><div class="ex"><span class="k">Example</span>Working to earn more is normal. But if every raise leaves you the same and you are already thinking about the next one, money has become an idol.</div></div>
+    <div class="tiles"><div><b>Money</b><em>Promises security.</em>You always want more.</div><div><b>Power</b><em>Promises control.</em>Often isolates.</div><div><b>Pleasure</b><em>Promises joy.</em>Lasts a moment.</div><div><b>Fame</b><em>Promises being loved.</em>Ties you to others' judgement.</div></div>
+  </div>
+  <div class="blk">
+    <div><h3>Money helps, up to a point</h3><p>At first it removes worries and raises happiness a lot. Beyond a certain threshold the effect shrinks considerably. <b>How</b> you spend it matters more: on <b>experiences</b> rather than things, to <b>buy time</b>, and above all <b>on others</b>.</p></div>
+    <div class="fig"><svg viewBox="0 0 320 170" role="img" aria-label="Happiness rises with money at first and then flattens out"><line x1="14" y1="150" x2="310" y2="150" stroke="rgba(122,104,80,.35)"/><line x1="14" y1="150" x2="14" y2="12" stroke="rgba(122,104,80,.35)"/><line x1="140" y1="46" x2="140" y2="150" stroke="rgba(122,104,80,.45)" stroke-dasharray="3 5"/><path d="M14 145 C50 70 100 50 160 44 S260 38 310 36" fill="none" stroke="var(--acc)" stroke-width="2.6" stroke-linecap="round"/></svg><div class="leg"><span><i></i>Happiness</span><span style="color:var(--ink-soft)">→ income</span></div><p class="cap">Indicative trend. Beyond the dashed line, each extra euro makes you less and less happier.</p></div>
+  </div>
+  <div class="blk">
+    <div><h3>Giving makes you happier than receiving</h3><p>In a famous experiment people were given 5 or 20 dollars to spend during the day. Those who spent it on someone else were happier than those who spent it on themselves, <b>whatever the amount</b>.</p><p>Generosity is a bridge to other people, and we are back at the heart of the course: relationships.</p><div class="ex"><span class="k">Practical tip</span>Give time as well as money. Volunteering together with others combines two things that make people happy: helping and being in company. Even buying the team breakfast on Monday works.</div></div>
+    <div class="steps"><div><i>1</i><span>You get <b>5 or 20 dollars</b></span></div><div><i>2</i><span>You spend it <b>on yourself</b> or <b>on someone else</b></span></div><div><i>3</i><span>At the end of the day the happier one is <b>whoever gave it away</b>, with any amount</span></div></div>
+  </div>
+  <div class="blk">
+    <div><h3>The reverse bucket list and work</h3><p>Instead of the list of things to do before you die, Brooks suggests <b>a list of desires to let go of</b>: the formula from module 1 put into practice.</p><p>Work makes people happy through two ingredients: <b>earned success</b> (the result is your merit) and <b>service</b> (your work helps someone). A waiter who feels they make the guests' evening special can be happier than an executive who doesn't know whom their work serves.</p></div>
+    <div class="duo"><div><b>Bucket list</b>See Japan. A bigger house. The new car.</div><div class="hi"><b>Reverse bucket list</b>Stop needing the last word. Stop changing phones every year. Stop seeking everyone's approval.</div></div>
+  </div>
+</template>
+
+<template id="t6en">
+  <div class="ph"><div class="num">MODULE 06</div><h2>From innovator to mentor, and finding your why</h2><p>The last module looks at life as a whole: how our strengths change, how to get through transitions and where meaning comes from.</p></div>
+  <div class="blk">
+    <div><h3>Two kinds of intelligence</h3><p><b>Fluid intelligence</b> (speed, new ideas) peaks early and then declines. <b>Crystallised intelligence</b> (experience, the ability to teach) keeps growing.</p><p>Darwin stayed attached to his innovator phase and ended his life dissatisfied. Bach moved on to teaching and composing for others, and lived his old age in peace.</p><div class="ex"><span class="k">As a leader</span>A colleague with twenty years of experience is slower with new tools. If they become the mentor of new hires, the team gains and they find a role that values them.</div></div>
+    <div class="fig"><svg viewBox="0 0 320 170" role="img" aria-label="Fluid intelligence rises and then falls, crystallised intelligence keeps rising"><line x1="12" y1="150" x2="310" y2="150" stroke="rgba(122,104,80,.35)"/><path d="M12 140 C60 40 100 30 130 42 S230 112 310 128" fill="none" stroke="#7a7064" stroke-width="2" stroke-dasharray="5 5"/><path d="M12 146 C100 128 190 80 310 32" fill="none" stroke="var(--acc)" stroke-width="2.6" stroke-linecap="round"/><circle cx="310" cy="32" r="5" fill="var(--acc)"/></svg><div class="leg"><span class="q"><i></i>Fluid: innovator</span><span><i></i>Crystallised: mentor</span><span style="color:var(--ink-soft)">→ age</span></div></div>
+  </div>
+  <div class="blk">
+    <div><h3>Transitions are a corridor</h3><p>A new job, a new city, the end of a relationship: they are like the corridor between two rooms. Uncomfortable, sometimes dark, but the only way to get from one to the other.</p><p>Brooks advises going through them rather than skipping them at all costs: that is where you grow.</p><div class="ex"><span class="k">Example</span>Someone changing industry spends months being neither their old self nor yet the new one. Those months are the hardest, but also the ones where they learn the most.</div></div>
+    <div class="room"><div><b>Before</b>the phase you leave</div><div class="mid"><b>The corridor</b>uncomfortable, but this is where you grow</div><div class="end"><b>After</b>the new phase</div></div>
+  </div>
+  <div class="blk">
+    <div><h3>Meaning comes from three things</h3><p><b>Coherence</b>: your life makes sense to you. <b>Purpose</b>: you have a direction. <b>Significance</b>: you matter to someone.</p><p>Two questions to ask yourself and write down: <b>why am I alive?</b> and <b>what would I be willing to sacrifice for?</b> If the answer doesn't come right away, that's fine: what matters is to keep asking.</p><div class="ex"><span class="k">Parting wisdom</span>Share what you have learned: teaching happiness to others makes you happier too.</div></div>
+    <div class="pil"><div style="min-height:120px"><b>Coherence</b>it makes sense to me</div><div style="min-height:160px"><b>Purpose</b>I know where I'm going</div><div style="min-height:200px"><b>Significance</b>I matter to someone</div></div>
+  </div>
+</template>
+
+<template id="t7en">
+  <div class="ph"><div class="num">TO CLOSE</div><h2>What I bring to the team</h2><p>The whole course translated into six things a leader can start doing tomorrow.</p></div>
+  <div class="six">
+    <div class="m2" style="border-top:3px solid var(--acc)"><b>Know yourself</b>Knowing my emotional profile and how I react under pressure.<small>Module 2</small></div>
+    <div class="m3" style="border-top:3px solid var(--acc)"><b>Build real bonds</b>Time and attention for people, not only for tasks.<small>Modules 3 and 4</small></div>
+    <div class="m1" style="border-top:3px solid var(--acc)"><b>Recognise effort</b>Recognised merit turns effort into satisfaction.<small>Module 1</small></div>
+    <div class="m6" style="border-top:3px solid var(--acc)"><b>Explain the why</b>A task with a clear purpose gives meaning.<small>Module 6</small></div>
+    <div class="m4" style="border-top:3px solid var(--acc)"><b>Value everyone</b>The energy of newcomers, the experience of veterans.<small>Module 6</small></div>
+    <div class="m5" style="border-top:3px solid var(--acc)"><b>Be generous</b>With time, attention and credit, before things.<small>Module 5</small></div>
+  </div>
+  <div class="thanks"><h3>Thank you</h3><p>Thank you to <a class="bw" href="https://bobw.co/" target="_blank" rel="noopener">Bob W.</a> for giving me the opportunity to take this course. Brooks's last lesson is to share what you learn: this page is my way of doing it.</p><p>Marvin</p></div>
+</template>
+
+<script>
+// titles animate in on load
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const root = document.documentElement;
+  root.classList.add('arrived');
+  setTimeout(() => root.classList.remove('arrived'), 4200);
+})();
+
+// opened modules
+const Panel = (() => {
+  const panel = document.getElementById('panel'), sheet = document.getElementById('sheet');
+  const NAMES = { it: ['', 'Cos\'è la felicità', 'Le emozioni', 'Amore e legami', 'Amicizia e solitudine', 'Soldi, potere e fama', 'Il futuro e il significato', 'Cosa porto nel team'], en: ['', 'What happiness is', 'Emotions', 'Love and bonds', 'Friendship and loneliness', 'Money, power and fame', 'The future and meaning', 'What I bring to the team'] };
+  const T = { it: { full: 'Soddisfazione piena', at: 'Soddisfazione al ', close: 'Chiudi ✕', back: 'Torna ai moduli' }, en: { full: 'Fully satisfied', at: 'Satisfaction at ', close: 'Close ✕', back: 'Back to modules' } };
+  let cur = 0;
+  const L = () => document.documentElement.classList.contains('en') ? 'en' : 'it';
+  let open = false, back = null;
+  const $ = id => sheet.querySelector('#' + id);
+  const HAND = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const TRY = { it: 'Prova tu: trascina i cursori', en: 'Try it: drag the sliders' };
+  function wire() {
+    const groups = new Set([...sheet.querySelectorAll('.ctl')].map(c => c.parentElement));
+    groups.forEach(g => {
+      g.classList.add('try');
+      const tag = document.createElement('div'); tag.className = 'try-tag'; tag.innerHTML = HAND + TRY[L()];
+      g.insertBefore(tag, g.querySelector('.ctl'));
+      g.addEventListener('input', () => g.classList.add('used'), { once: true });
+    });
+    const fill = r => r.style.setProperty('--p', ((r.value - r.min) / (r.max - r.min) * 100) + '%');
+    sheet.querySelectorAll('input[type=range]').forEach(r => { fill(r); r.addEventListener('input', () => fill(r)); });
+    const h = $('h'), w = $('w');
+    if (h) { const u = () => { const r = h.value / w.value; $('hv').textContent = h.value; $('wv').textContent = w.value; $('sm').style.width = Math.min(100, r * 100) + '%'; $('so').textContent = r >= 1 ? T[L()].full : T[L()].at + Math.round(r * 100) + '%'; }; h.oninput = w.oninput = u; u(); }
+    const pa = $('pa'), na = $('na');
+    if (pa) { const u = () => { const p = +pa.value, n = +na.value; $('pv').textContent = p; $('nv').textContent = n; const k = p >= 5 ? (n < 5 ? 'q1' : 'q2') : (n < 5 ? 'q3' : 'q4'); ['q1', 'q2', 'q3', 'q4'].forEach(q => $(q).classList.toggle('on', q === k)); }; pa.oninput = na.oninput = u; u(); }
+  }
+  const xbtn = document.getElementById('xclose');
+  let kb = false, pushed = false;
+  addEventListener('keydown', () => { kb = true; }, true);
+  addEventListener('pointerdown', () => { kb = false; }, true);
+  function show(n, keepScroll) {
+    n = +n; cur = n;
+    const lg = L(), names = NAMES[lg];
+    const y = panel.scrollTop;
+    panel.className = 'panel on m' + n;
+    const prev = n > 1 ? `<button class="pill glass" data-go="${n - 1}">← ${names[n - 1]}</button>` : '<span></span>';
+    const next = n < 7 ? `<button class="pill glass" data-go="${n + 1}">${names[n + 1]} →</button>` : `<button class="pill glass" data-close>${T[lg].back}</button>`;
+    sheet.innerHTML = document.getElementById('t' + n + (lg === 'en' ? 'en' : '')).innerHTML + `<div class="pnav">${prev}${next}</div>`;
+    wire();
+    xbtn.textContent = T[lg].close; xbtn.hidden = false;
+    if (!open) { back = document.activeElement; document.body.style.overflow = 'hidden'; open = true; }
+    panel.scrollTop = keepScroll ? y : 0;
+    panel.setAttribute('aria-label', names[n]);
+    if (!keepScroll) sheet.focus({ preventScroll: true });
+  }
+  function hide() {
+    if (!open) return;
+    panel.classList.remove('on'); document.body.style.overflow = ''; open = false; xbtn.hidden = true;
+    if (kb && back && back !== document.body) back.focus({ preventScroll: true }); else document.activeElement && document.activeElement.blur();
+  }
+  // the address follows the open module (#modulo-3), so the phone's back button closes it
+  // addresses: English #module-3, Italian #modulo-3; home page in Italian #it (#en or nothing for English)
+  const pre = lg => lg === 'it' ? 'modulo-' : 'module-';
+  const homeHash = lg => lg === 'it' ? '#it' : '';
+  const clearTo = h => { try { history.replaceState(null, '', location.pathname + location.search + h); } catch (e) {} };
+  const route = () => {
+    const h = location.hash, m = /^#(module|modulo)-([1-7])$/.exec(h);
+    if (m) { const lg = m[1] === 'modulo' ? 'it' : 'en'; if (L() !== lg && window.HLsetLang) window.HLsetLang(lg); if (!open || cur !== +m[2]) show(m[2]); return; }
+    if (open) { hide(); if (h !== homeHash(L())) clearTo(homeHash(L())); return; }
+    if (h === '#it' || h === '#en') { if (L() !== h.slice(1) && window.HLsetLang) window.HLsetLang(h.slice(1)); }
+  };
+  const openMod = n => { const h = '#' + pre(L()) + n; if (location.hash === h) { show(n); return; } pushed = true; location.hash = h.slice(1); };
+  const goMod = n => { location.replace('#' + pre(L()) + n); };
+  const closeMod = () => {
+    if (!open) return;
+    if (pushed) { pushed = false; history.back(); setTimeout(() => { if (open) { hide(); } }, 350); }
+    else { clearTo(homeHash(L())); hide(); }
+  };
+  // after a language switch, the address follows the language
+  const syncHash = lg => { if (open) location.replace('#' + pre(lg) + cur); else clearTo(homeHash(lg)); };
+  addEventListener('hashchange', route);
+  document.addEventListener('click', e => {
+    if (e.target.closest('a.bw')) return;
+    const o = e.target.closest('[data-open]'); if (o) { e.preventDefault(); openMod(o.dataset.open); return; }
+    const g = e.target.closest('[data-go]'); if (g) { goMod(g.dataset.go); return; }
+    if (e.target.closest('[data-close]')) closeMod();
+  });
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeMod(); });
+  if (/^#(module|modulo)-[1-7]$/.test(location.hash)) setTimeout(route, 0);
+  return { get open() { return open; }, refresh() { if (open) show(cur, true); }, setLang(lg) { xbtn.textContent = T[lg].close; }, syncHash };
+})();
+
+// language
+(() => {
+  const root = document.documentElement, btns = [...document.querySelectorAll('[data-lang]')];
+  const set = (lg, save) => {
+    root.classList.toggle('en', lg === 'en'); root.lang = lg;
+    btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lg)));
+    if (save) { try { localStorage.setItem('hl-lang', lg); } catch (e) {} }
+    Panel.setLang(lg); Panel.refresh();
+  };
+  window.HLsetLang = lg => set(lg, false);
+  btns.forEach(b => b.addEventListener('click', () => { const lg = b.dataset.lang; set(lg, true); Panel.syncHash(lg); }));
+  // the address decides first (#it, #modulo-3 = Italian; #en, #module-3 = English), then the last choice, then English
+  const h = location.hash;
+  let lg = /^#(it|modulo-[1-7])$/.test(h) ? 'it' : /^#(en|module-[1-7])$/.test(h) ? 'en' : null;
+  if (!lg) { try { lg = localStorage.getItem('hl-lang'); } catch (e) {} }
+  set(lg === 'it' ? 'it' : 'en', false);
+})();
+
+// vertical list: cards and links appear as they enter the screen
+(() => {
+  const list = document.getElementById('list'), counter = document.getElementById('counter');
+  const items = [...list.querySelectorAll('[data-item]')], MODS = items.length - 1;
+  const pad = n => String(n).padStart(2, '0');
+  let raf = 0, last = -1, shown = null;
+  const upd = () => {
+    raf = 0;
+    const mid = innerHeight / 2; let idx = -1;
+    items.forEach((el, i) => { if (el.getBoundingClientRect().top < mid) idx = i; });
+    const on = idx >= 0 && idx < MODS;
+    if (on !== shown) { counter.classList.toggle('on', on); shown = on; }
+    if (on && idx !== last) { counter.textContent = pad(idx + 1) + ' / ' + pad(MODS); last = idx; }
+  };
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+  upd();
+})();
+</script>
+</body>
+</html>
