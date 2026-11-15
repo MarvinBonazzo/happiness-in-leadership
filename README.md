@@ -26,3 +26,7 @@ Texts and summaries are my own, based on what I learned in the course. Charts sh
 ## Author
 
 Marvin, [marvinbonazzo.github.io](https://marvinbonazzo.github.io/)
+
+## See also
+
+- [Lean Six Sigma Black Belt: processes and people](https://marvinbonazzo.github.io/lean-six-sigma-black-belt/)
